@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/fire1ce/macOSscreenControlServer/issues"
   },
-  "homepage": "https://github.com/fire1ce/macOSscreenControlServer#readme"
+  "homepage": "https://github.com/fire1ce/macOSscreenControlServer#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
