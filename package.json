@@ -1,0 +1,19 @@
+{
+  "name": "macosscreencontrolserver",
+  "version": "1.0.0",
+  "description": "node server to turn on/off the macOS screen, get status if screen is on/off",
+  "main": "screenControlServer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fire1ce/macOSscreenControlServer.git"
+  },
+  "author": "Stas Yakubov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fire1ce/macOSscreenControlServer/issues"
+  },
+  "homepage": "https://github.com/fire1ce/macOSscreenControlServer#readme"
+}
