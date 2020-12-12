@@ -1,30 +1,34 @@
 const express = require('express');
+const axios = require('axios');
 const app = express();
-const {exec} = require('child_process');
-const port = 55888;
+const serverPort = 55888;
 
-app.post('/on', function (req, res) {
-    res.send('on');
-    exec('caffeinate -u -t 1');
-    console.log('on');
+const getScreenStatus = async () => {
+    try {
+        const resp = await axios.get('http://192.168.100.138:55888/status');
+        return resp.data;
+    } catch (err) {}
+};
+
+app.get('/status', (req, res) => {
+    getScreenStatus().then((data) => {
+        if (data == 1) {
+            res.send('1');
+            console.log('Screen is On');
+        } else {
+            res.send('0');
+            console.log('Screen is Off');
+        }
+    });
 });
-app.post('/off', function (req, res) {
-    res.send('off');
-    exec('pmset displaysleepnow');
-    console.log('off');
+
+app.get('/off', function (req, res) {
+    res.send('ok');
 });
-app.post('/status', function (req, res) {
-    exec(
-        'pmset -g powerstate IODisplayWrangler | tail -1 | cut -c29',
-        (error, stdout, stderr) => {
-            if (stdout == 4) {
-                res.send('1');
-                console.log('1');
-            } else {
-                res.send('0');
-                console.log('0');
-            }
-        },
-    );
+app.get('/on', function (req, res) {
+    res.send('ok');
 });
-app.listen(port, () => console.log(`screenControl listening on port ${port}!`));
+
+app.listen(serverPort, () =>
+    console.log(`screenControlServer listening on port ${serverPort}!`),
+);
