@@ -5,7 +5,7 @@ const serverPort = 55888;
 
 const getScreenStatus = async () => {
     try {
-        const resp = await axios.get('http://192.168.100.138:55888/status');
+        const resp = await axios.get('http://sparrow.3os.re:55888/status');
         return resp.data;
     } catch (err) {}
 };
